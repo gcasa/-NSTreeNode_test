@@ -10,12 +10,24 @@
 @interface AppDelegate ()
 
 @property (strong) IBOutlet NSWindow *window;
+@property (strong) NSTreeNode *root;
+
 @end
 
 @implementation AppDelegate
 
+- (NSTreeNode *) buildNodes
+{
+  NSTreeNode *node = [[NSTreeNode alloc] initWithRepresentedObject: @"Root"];
+  NSTreeNode *child = [[NSTreeNode alloc] initWithRepresentedObject: @"NSTreeNode-Child 0"];
+  [node.mutableChildNodes addObject: child];
+  
+  return node;
+}
+
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     // Insert code here to initialize your application
+    self.root = [self buildNodes];
 }
 
 
@@ -28,5 +40,9 @@
     return YES;
 }
 
+- (IBAction) refresh:(id)sender
+{
+    [self.outlineView reloadData];
+}
 
 @end

@@ -9,6 +9,10 @@
 
 @interface AppDelegate : NSObject <NSApplicationDelegate>
 
+@property IBOutlet NSOutlineView *outlineView;
+@property IBOutlet NSTreeController *treeController;
+
+- (IBAction) refresh: (id)sender;
 
 @end
 
